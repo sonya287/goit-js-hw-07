@@ -1,15 +1,20 @@
-const inputEl = document.querySelector("#validation-input");
- 
-const onInputBlur = event => {
-    const inputLength = inputEl.getAttribute("data-length");
-    
-    event.currentTarget.value.length === Number(inputLength) ?
-        inputEl.classList.add('valid') : inputEl.classList.add('invalid');
+const inputRef = document.querySelector('#validation-input');
+
+const resetValidationСlasses = event =>
+  event.currentTarget.classList.remove('invalid', 'valid');
+
+const setValidationСlasses = event => {
+  const ref = event.currentTarget;
+  const inputValidLength = Number(ref.dataset.length);
+
+  if (ref.value.length !== inputValidLength) {
+    ref.classList.add('invalid');
+    return;
+  }
+
+  ref.classList.add('valid');
 };
 
-const onInputFocus = (event) => {
-    inputEl.classList.remove('valid', 'invalid');
-}
+inputRef.addEventListener('focus', resetValidationСlasses);
 
-inputEl.addEventListener("blur", onInputBlur);
-inputEl.addEventListener("focus", onInputFocus);
+inputRef.addEventListener('blur', setValidationСlasses);
