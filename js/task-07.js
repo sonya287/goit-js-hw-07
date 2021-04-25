@@ -1,6 +1,9 @@
-const rangeRef = document.querySelector('#font-size-control');
-const textRef = document.querySelector('#text');
+const inputRangeEl = document.querySelector('#font-size-control');
+const textEl = document.querySelector('#text');
 
-rangeRef.addEventListener('input', () => {
-  textRef.style.fontSize = 0.25 + (1.5 * rangeRef.value) / 100 + 'rem';
-});
+const onMoveInput = event => {
+    const eventValue = event.currentTarget.value;
+    textEl.style.fontSize = `${eventValue / 3}px`;
+}
+
+inputRangeEl.addEventListener("input", onMoveInput);
