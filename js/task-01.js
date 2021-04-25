@@ -1,16 +1,16 @@
-const categoriesEl = document.querySelectorAll("#categories .item");
-console.log(`'У списку ${categoriesEl.length} категорії.'`);
+const categoriesRef = document.querySelectorAll('#categories .item');
 
-const getCategory = category => {
-    const categoryTitleEl = category.querySelector(".item h2");
-    const categoryTitleContent = categoryTitleEl.textContent;
+const numberOfCategories = categoriesRef.length;
+console.log(`В списке ${numberOfCategories} категории`);
 
-    const elsOfCategory = category.querySelectorAll("li");
-    const countElsOfCategory = elsOfCategory.length;
+const getCategorySummary = category => {
+  const categoryTitleRef = category.querySelector('h2');
+  const categoryTitle = categoryTitleRef.textContent;
+  const categoryItemsRef = category.querySelectorAll('li');
+  const numberOfCategoryItems = categoryItemsRef.length;
 
-    return `- Категорія: ${categoryTitleContent}
-- Кількість елементів: ${countElsOfCategory}`;
+  return ` - Категория: ${categoryTitle}\n > Количество элементов: ${numberOfCategoryItems}`;
 };
-    
-categoriesEl.forEach(category => console.log(getCategory(category)));
+
+categoriesRef.forEach(category => console.log(getCategorySummary(category)));
 
